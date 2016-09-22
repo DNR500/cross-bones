@@ -1,0 +1,36 @@
+{
+    "rules": {
+        "indent": [
+            2,
+            4
+        ],
+        "quotes": [
+            2,
+            "single"
+        ],
+        "linebreak-style": [
+            2,
+            "unix"
+        ]
+    },
+    "env": {
+        "es6": true,
+        "node": true,
+        "mocha": true,
+        "browser": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "modules": true
+        }
+    },
+    "plugins": [
+        "react"
+    ],
+    "extends": ["eslint:recommended", "plugin:react/recommended"],
+    "globals": {
+        "createjs": true
+    }
+}
