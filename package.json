@@ -1,11 +1,13 @@
 {
-  "name": "movies",
+  "name": "cross-bones",
   "version": "0.0.0",
-  "description": "movies project",
+  "description": "cross-bones",
   "main": "index.js",
   "scripts": {
     "versions:check": "ncu",
     "versions:update": "ncu -u",
+    "dependencies:issues": "node depcheck",
+    "dependencies:usage": "node depcheck usage",
     "metrics": "rm -rf report/plato && plato -r -d report/plato src/public/js --eslint .eslintrc.browser.json",
     "start:webpack": "webpack-dev-server",
     "start:node": "node build/node/server.js",
@@ -48,8 +50,9 @@
     "casper-chai": "^0.3.0",
     "casperjs": "^1.1.3",
     "chai": "^3.5.0",
-    "css-loader": "^0.25.0",
+    "depcheck": "^0.6.4",
     "es5-shim": "^4.5.9",
+    "es6-shim": "^0.35.1",
     "eslint": "^3.5.0",
     "eslint-plugin-react": "^6.3.0",
     "html-loader": "^0.4.3",
@@ -63,6 +66,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.7.0",
+    "mkdirp": "^0.5.1",
     "mocha": "^3.0.2",
     "mocha-casperjs": "^0.5.7",
     "node-sass": "^3.4.2",
@@ -73,8 +77,6 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "sinon": "^1.17.3",
-    "style-loader": "^0.13.1",
-    "trim": "0.0.1",
     "webpack": "^1.12.14",
     "webpack-dev-server": "^1.16.0"
   }
