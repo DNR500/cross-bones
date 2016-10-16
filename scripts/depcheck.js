@@ -1,6 +1,9 @@
+'use strict';
+
 const depcheck = require('depcheck');
 const mkdirp = require('mkdirp');
-const fs = require("fs");
+const fs = require('fs');
+const path = require('path');
 
 const options = {
     withoutDev: false,
@@ -31,17 +34,17 @@ const options = {
 };
 
 const createReport = (filePath, reportJson) => {
-    var dirPath = filePath.match(/[^\"]+\//g)[0];
+    let dirPath = filePath.match(/[^\']+\//g)[0];
     mkdirp(dirPath, (mkDirErr) => {
         if (mkDirErr) throw mkDirErr;
         fs.writeFile(filePath, JSON.stringify(reportJson, null, 2), (fsErr) => {
             if (fsErr) throw fsErr;
-            console.log(`Report saved to ${filePath}`); 
+            console.info(`Report saved to ${filePath}`);
         });
     });
 };
 
-depcheck(__dirname, options, (report) => {
+depcheck(path.resolve(__dirname, '../'), options, (report) => {
     if(process.argv[2] === 'usage') {
         createReport('report/dependencies/usage.json', Object.assign({}, report.using));
     } else {
