@@ -79,6 +79,7 @@
     "react-dom": "^15.3.2",
     "sinon": "^1.17.3",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.16.0"
+    "webpack-dev-server": "^1.16.0",
+    "webpack-manifest-plugin": "^1.0.1"
   }
 }

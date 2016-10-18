@@ -1,21 +1,24 @@
 'use strict';
 
-let testConfig = require('./webpack.test.config');
+const testConfig = require('./webpack.test.config');
 
-let HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 let additionalBuildConfig = {
     entry: ['./src/public/js/index.js'],
     output: {
         path: __dirname + '/build/public/js',
-        filename: 'index_bundle.js'
+        filename: 'index.bundle.[hash].js'
     },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'simple app',
             filename: '../index.html',
             template: './src/public/index.html'
-        })
+        }),
+        new ManifestPlugin()
     ]
 };
 
