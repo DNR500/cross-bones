@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Home page', function() {
     before(function() {
         casper.start('http://localhost:3000');

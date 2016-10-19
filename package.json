@@ -18,9 +18,8 @@
     "casperjs": "mocha-casperjs test/casper/**/*.casper.js && npm run stop:node",
     "test:karma": "karma start",
     "test:node": "mocha --compilers js:babel-core/register 'src/node/**/*.spec.js'",
-    "moch:h": "mocha -h",
     "test:casper": "npm run start:node & npm run casperjs",
-    "test": "npm run test:karma && npm run test:casper",
+    "test": "npm run test:node && npm run test:karma && npm run test:casper",
     "scss": "node-sass --source-map-embed true -o build/public/css src/public/scss",
     "autoprefixer": "postcss -u autoprefixer -r build/public/css/*",
     "compile:html": "static-react src/public/index.html.js > build/public/index.react.html",
@@ -37,8 +36,8 @@
   },
   "engineStrict": true,
   "engines": {
-    "node": ">= 5.7.0",
-    "npm": ">= 3.6.0"
+    "node": "6.9.0",
+    "npm": "3.10.8"
   },
   "author": "Nathan Richards <nathan.richards.500@gmail.com>",
   "license": "ISC",
