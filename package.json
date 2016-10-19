@@ -8,8 +8,7 @@
     "versions:update": "ncu -u",
     "dependencies:issues": "node scripts/depcheck",
     "dependencies:usage": "node scripts/depcheck usage",
-    "metrics": "rm -rf report/plato && plato -r -d report/plato src/public/js --eslint .eslintrc.browser.json",
-    "start:webpack": "webpack-dev-server",
+    "metrics": "rm -rf report/plato && plato -r -d report/plato --eslint .eslintrc.browser.json src",
     "start:node": "node build/node/server.js",
     "stop:node": "pkill -f 'cross-bones-node-service'",
     "lint:js": "eslint './**/*.js' --config '.eslintrc.browser.json' --ignore-path '.eslintignore.browser'",
@@ -22,12 +21,17 @@
     "test": "npm run test:karma && npm run test:casper",
     "scss": "node-sass --source-map-embed true -o build/public/css src/public/scss",
     "autoprefixer": "postcss -u autoprefixer -r build/public/css/*",
+    "compile:html": "static-react src/public/index.html.js > build/public/index.react.html",
     "compile:js:node": "babel src/node --out-dir build/node --no-babelrcn --source-maps inline --preset es2015-node",
     "compile:js:public": "webpack -p",
     "compile:css": "npm run scss && npm run autoprefixer",
     "compile": "npm run compile:js:node && npm run compile:js:public && npm run compile:css",
     "build": "npm run lint && npm run test:karma && npm run compile && npm run test:casper",
-    "watch": "webpack --watch & node-sass --source-map-embed true -o build/css src/public/scss --watch"
+    "watch:html": "watch -c 'npm run compile:html' -p './src/public/**/*.html.js'",
+    "watch:css": "node-sass --source-map-embed true -o build/public/css src/public/scss --watch",
+    "watch:js:public": "webpack --watch",
+    "watch:js:node": "watch -c 'npm run compile:js:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
+    "watch": "npm run watch:js:public & npm run watch:css & npm run watch:html & npm run watch:js:node"
   },
   "engineStrict": true,
   "engines": {
@@ -71,6 +75,7 @@
     "mocha": "^3.0.2",
     "mocha-casperjs": "^0.5.7",
     "node-sass": "^3.4.2",
+    "nodemon": "^1.11.0",
     "npm-check-updates": "^2.8.0",
     "phantomjs-prebuilt": "^2.1.7",
     "plato": "^1.7.0",
@@ -78,8 +83,9 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "sinon": "^1.17.3",
+    "static-react": "^3.2.0",
+    "watch-cli": "^0.2.1",
     "webpack": "^1.12.14",
-    "webpack-dev-server": "^1.16.0",
     "webpack-manifest-plugin": "^1.0.1"
   }
 }
