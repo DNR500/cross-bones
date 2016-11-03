@@ -1,4 +1,4 @@
-# Movies test project
+# Cross-bones
 
 To bring in dependencies run the following in the root of the project..
 ```
@@ -15,15 +15,9 @@ npm install
 * **npm run build** - lints, test, amd compiles our site
 * **npm run watch** - js and scss watch task to help speed up developemnt
 
-### Project entry points
-* **HTML** - src/index.html
-* **JS** - src/js/index.js
-* **SCSS** - src/scss/main.scss
-
 ### To run project..
 
 ```
 npm run build
-npm run node-server
+npm run start:node
 ```
-In a browser open http://localhost:3000
