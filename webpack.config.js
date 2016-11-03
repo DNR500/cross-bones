@@ -1,5 +1,7 @@
 'use strict';
 
+const webpack = require('webpack');
+
 const testConfig = require('./webpack.test.config');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -13,6 +15,11 @@ let additionalBuildConfig = {
         filename: 'index.bundle.[hash].js'
     },
     plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        }),
         new HtmlWebpackPlugin({
             title: 'simple app',
             filename: '../index.html',

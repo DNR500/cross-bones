@@ -4,6 +4,9 @@ const Head = ({ title }) => (
     <head>
         <meta charSet='utf-8' />
         <title>{title}</title>
+        <script>
+            alert(\'hello\')\;
+        </script>
         <meta name='description' content='' />
         <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' />
         <link href='css/main.css' rel='stylesheet' />

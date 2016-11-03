@@ -1,5 +1,5 @@
 import React from 'react'
-import Head from './html/partials/head.html'
+import Head from './partials/head.html'
 
 class Index extends React.Component {
     render () {

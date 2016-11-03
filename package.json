@@ -22,7 +22,7 @@
     "test": "npm run test:node && npm run test:karma && npm run test:casper",
     "scss": "node-sass --source-map-embed true -o build/public/css src/public/scss",
     "autoprefixer": "postcss -u autoprefixer -r build/public/css/*",
-    "compile:html": "static-react src/public/index.html.js > build/public/index.react.html",
+    "compile:html": "static-react src/universal/pages/index.html.js > build/public/index.react.html",
     "compile:js:node": "babel src/node --out-dir build/node --source-maps inline --ignore spec.js",
     "compile:js:public": "rm -rf build/public/js && webpack -p",
     "compile:css": "npm run scss && npm run autoprefixer",
@@ -33,6 +33,10 @@
     "watch:js:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/js/**/*.js'",
     "watch:js:node": "watch -c 'npm run compile:js:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
     "watch": "npm run watch:js:public & npm run watch:css & npm run watch:html & npm run watch:js:node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DNR500/cross-bones.git"
   },
   "engineStrict": true,
   "engines": {
