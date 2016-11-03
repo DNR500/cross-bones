@@ -6,8 +6,7 @@ npm install
 ```
 
 ### Task commands
-* **npm run dev-server** - runs a 'hotswap' server for js development http://localhost:3000
-* **npm run node-server** - runs the page in a server http://localhost:3000 (do npm run build first!)
+* **npm run start:node** - runs the page in a server http://localhost:3000 (do npm run build first!)
 * **npm run lint** - runs js and json linting tasks
 * **npm test** - runs karma and javascript tests
 * **npm run js-compile** - runs js bundling task and packages up our javascript into one bundle
