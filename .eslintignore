@@ -37,4 +37,5 @@ jspm_packages
 
 build/*
 report/*
+test/*
 

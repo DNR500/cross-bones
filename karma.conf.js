@@ -1,27 +1,29 @@
+const webpackConfig = require('./webpack.test.config');
+
 module.exports = function karmaConfig(config) {
-    config.set({
-        logLevel: config.LOG_INFO,
+  config.set({
+    logLevel: config.LOG_INFO,
 
-        client: {captureConsole: true},
+    client: { captureConsole: true },
 
-        frameworks: ['mocha', 'es6-shim'],
+    frameworks: ['mocha', 'es6-shim'],
 
-        reporters: ['progress'],
+    reporters: ['progress'],
 
-        files: ['./src/public/js/specs.karma.js'],
+    files: ['./src/public/js/specs.karma.js'],
 
-        preprocessors: {
-            './src/public/js/specs.karma.js': ['webpack', 'sourcemap']
-        },
+    preprocessors: {
+      './src/public/js/specs.karma.js': ['webpack', 'sourcemap'],
+    },
 
-        browsers: ['PhantomJS'],
+    browsers: ['PhantomJS'],
 
-        singleRun: true,
+    singleRun: true,
 
-        webpack: require('./webpack.test.config'),
+    webpack: webpackConfig,
 
-        webpackMiddleware: {
-            noInfo: 'errors-only'
-        }
-    });
+    webpackMiddleware: {
+      noInfo: 'errors-only',
+    },
+  });
 };
