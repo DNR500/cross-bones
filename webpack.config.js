@@ -13,6 +13,7 @@ const additionalBuildConfig = {
     filename: 'index.bundle.[hash].js',
   },
   plugins: [
+    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,

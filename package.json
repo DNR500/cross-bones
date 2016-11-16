@@ -6,9 +6,11 @@
   "scripts": {
     "versions:check": "ncu -x eslint-plugin-jsx-a11y",
     "versions:update": "ncu -u -x eslint-plugin-jsx-a11y",
-    "dependencies:issues": "node scripts/depcheck",
-    "dependencies:usage": "node scripts/depcheck usage",
-    "metrics": "rm -rf report/plato && plato -r -d report/plato --eslint .eslintrc.json src",
+    "report:dep:issues": "node scripts/depcheck",
+    "report:dep:usage": "node scripts/depcheck usage",
+    "report:metrics": "rm -rf report/plato && plato -r -d report/plato --eslint .eslintrc.json src",
+    "report:bundles": "rm -rf build/public/js && webpack --config webpack.report.config.js",
+    "report": "npm run report:dep:issues && npm run report:dep:usage && npm run report:metrics && npm run report:bundles",
     "start:pm2": "pm2 start ecosystem.json",
     "stop:pm2": "pm2 stop ecosystem.json && pm2 kill",
     "start:node": "node build/node/server.js",
@@ -27,7 +29,7 @@
     "compile:html": "echo 'templates to be built'",
     "compile:assets": "rm -rf build/public/assets && mkdir -p build/public/assets && cp -a src/public/assets/. build/public/assets/",
     "compile:js:node": "babel src/node --out-dir build/node --source-maps inline --ignore spec.js",
-    "compile:js:public": "rm -rf build/public/js && webpack -p",
+    "compile:js:public": "rm -rf build/public/js && webpack",
     "compile:css": "npm run scss && npm run autoprefixer",
     "compile": "npm run compile:js:node && npm run compile:js:public && npm run compile:css && npm run compile:html && npm run compile:assets",
     "build": "npm run lint && npm run test:karma && npm run compile && npm run test:casper",
@@ -100,6 +102,7 @@
     "sinon": "^1.17.3",
     "watch-cli": "^0.2.1",
     "webpack": "1.13.3",
-    "webpack-manifest-plugin": "^1.0.1"
+    "webpack-manifest-plugin": "^1.0.1",
+    "webpack-visualizer-plugin": "^0.1.5"
   }
 }
