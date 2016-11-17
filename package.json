@@ -17,7 +17,7 @@
     "stop:node": "pkill -f 'cross-bones-node-service'",
     "lint:js": "eslint './**/*.js' --config '.eslintrc.json' --ignore-path '.eslintignore'",
     "lint:json:test": "jsonlint-cli ./src/**/*.json",
-    "lint:json": "jsonlint-cli .babelrc && jsonlint-cli .eslintrc.json && jsonlint-cli ecosystem.json && jsonlint-cli ./src/**/*.json && jsonlint-cli ./test/**/*.json && jsonlint-cli ./scripts/**/*.json",
+    "lint:json": "jsonlint-cli .babelrc && jsonlint-cli ./*.json && jsonlint-cli ./src/**/*.json && jsonlint-cli ./test/**/*.json && jsonlint-cli ./scripts/**/*.json",
     "lint": "npm run lint:json && npm run lint:js",
     "casperjs": "mocha-casperjs test/casper/**/*.casper.js && npm run stop:node",
     "test:karma": "karma start",
