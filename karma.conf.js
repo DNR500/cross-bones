@@ -10,10 +10,10 @@ module.exports = function karmaConfig(config) {
 
     reporters: ['progress'],
 
-    files: ['./src/public/js/specs.karma.js'],
+    files: ['./src/public/bundles/specs.karma.js'],
 
     preprocessors: {
-      './src/public/js/specs.karma.js': ['webpack', 'sourcemap'],
+      './src/public/bundles/specs.karma.js': ['webpack', 'sourcemap'],
     },
 
     browsers: ['PhantomJS'],
