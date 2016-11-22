@@ -6,23 +6,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const autoprefixer = require('autoprefixer');
+const WebpackCleanUpPlugin = require('webpack-cleanup-plugin');
 
 const ManifestPlugin = require('webpack-manifest-plugin');
 
-testConfig.module.loaders = [
-  ...testConfig.module.loaders,
-  {
-    test: /\.scss$/,
-    loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
-  },
-  {
-    test: /\.(eot|svg|ttf|woff|woff2)$/,
-    loader: 'file?name=../fonts/[name].[ext]',
-  },
-];
+const autoprefixer = require('autoprefixer');
+
+const stylesDev = 'css?sourceMap!postcss?sourceMap!sass?sourceMap=true';
+const stylesProd = 'css!postcss!sass';
+const isProduction = process.env.NODE_ENV === 'production';
 
 const additionalBuildConfig = {
+  devtool: isProduction ? undefined : 'source-map',
   entry: {
     main: [
       './src/public/bundles/main.js',
@@ -32,6 +27,19 @@ const additionalBuildConfig = {
   output: {
     path: `${__dirname}/build/public/bundles`,
     filename: '[name].bundle.[hash].js',
+  },
+  module: {
+    loaders: [
+      ...testConfig.module.loaders,
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract('style', isProduction ? stylesProd : stylesDev),
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        loader: 'file?name=../fonts/[name].[ext]',
+      },
+    ],
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
@@ -47,6 +55,7 @@ const additionalBuildConfig = {
     }),
     new ManifestPlugin(),
     new ExtractTextPlugin('[name].bundle.[hash].css'),
+    new WebpackCleanUpPlugin(),
   ],
   postcss: () => [autoprefixer],
 };

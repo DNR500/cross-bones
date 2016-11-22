@@ -9,7 +9,7 @@
     "report:dep:issues": "node scripts/depcheck",
     "report:dep:usage": "node scripts/depcheck usage",
     "report:metrics": "rm -rf report/plato && plato -r -d report/plato --eslint .eslintrc.json src",
-    "report:bundles": "rm -rf build/public/bundles && webpack --config webpack.report.config.js",
+    "report:bundles": "rm -rf build/public/bundles && mkdir -p report/bundles/ && webpack --config webpack.report.config.js",
     "report": "npm run report:dep:issues && npm run report:dep:usage && npm run report:metrics && npm run report:bundles",
     "start:pm2": "pm2 start ecosystem.json",
     "stop:pm2": "pm2 stop ecosystem.json && pm2 kill",
@@ -27,12 +27,12 @@
     "compile:html": "echo 'templates to be built'",
     "compile:assets": "rm -rf build/public/assets && mkdir -p build/public/assets && cp -a src/public/assets/. build/public/assets/",
     "compile:node": "babel src/node --out-dir build/node --source-maps inline --ignore spec.js",
-    "compile:public": "rm -rf build/public/bundles && webpack",
+    "compile:public": "webpack",
     "compile": "npm run compile:node && npm run compile:public && npm run compile:html && npm run compile:assets",
     "build": "npm run lint && npm run test:karma && npm run compile && npm run test:casper",
     "watch:html": "watch -c 'npm run compile:html' -p './src/public/**/*.html.js'",
     "watch:assets": "watch -c 'npm run compile:assets' -p './src/public/assets/**/*'",
-    "watch:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/bundles/**/*.js'",
+    "watch:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/bundles/**/*.*'",
     "watch:node": "watch -c 'npm run compile:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
     "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets"
   },
@@ -104,6 +104,7 @@
     "style-loader": "^0.13.1",
     "watch-cli": "^0.2.1",
     "webpack": "1.13.3",
+    "webpack-cleanup-plugin": "^0.4.1",
     "webpack-manifest-plugin": "^1.0.1",
     "webpack-visualizer-plugin": "^0.1.5"
   }

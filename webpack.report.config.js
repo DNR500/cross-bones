@@ -1,9 +1,18 @@
-const productionConfig = require('./webpack.config');
-
 const Visualizer = require('webpack-visualizer-plugin');
 
-const reportConfig = Object.assign({}, productionConfig);
+const testConfig = require('./webpack.test.config');
 
-reportConfig.plugins.push(new Visualizer({ filename: '../../../report/bundles/stats.html' }));
+const reportConfig = {
+  entry: {
+    main: './src/public/bundles/main.js',
+  },
+  output: {
+    path: `${__dirname}/report/bundles`,
+    filename: '[name].bundle.[hash].js',
+  },
+  plugins: [
+    new Visualizer({ filename: 'main.stats.html' }),
+  ],
+};
 
-module.exports = reportConfig;
+module.exports = Object.assign({}, testConfig, reportConfig);
