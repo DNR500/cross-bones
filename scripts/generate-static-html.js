@@ -1,6 +1,6 @@
 const bundlesUtils = require('./utils/bundle-utils');
 
-bundlesUtils.getHashedFilename('main.css').then((filename) => {
+bundlesUtils.getHashedFilenames('main.css', 'main.js').then((filename) => {
     console.info(filename);
 }).catch((err) => {
     console.error(err);

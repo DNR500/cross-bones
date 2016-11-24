@@ -21,10 +21,12 @@ const getHashedFilename = srcFilename => new Promise((resolve, reject) => {
     });
 });
 
-const getHashedFilenames = srcFilenames => new Promise((resolve, reject) => {
-    // promise all
-});
+const getHashedFilenames = (...srcFilenames) => {
+    const hashedFilenameQueries = srcFilenames.map(srcFilename => getHashedFilename(srcFilename));
+    return Promise.all(hashedFilenameQueries);
+};
 
 module.exports = {
-    getHashedFilename
+    getHashedFilename,
+    getHashedFilenames,
 };
