@@ -2,8 +2,6 @@ const webpack = require('webpack');
 
 const testConfig = require('./webpack.test.config');
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const WebpackCleanUpPlugin = require('webpack-cleanup-plugin');
@@ -47,11 +45,6 @@ const additionalBuildConfig = {
       compress: {
         warnings: false,
       },
-    }),
-    new HtmlWebpackPlugin({
-      title: 'simple app',
-      filename: '../index.html',
-      template: './src/public/index.html',
     }),
     new ManifestPlugin(),
     new ExtractTextPlugin('[name].bundle.[hash].css'),
