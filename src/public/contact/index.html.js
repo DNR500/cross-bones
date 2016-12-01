@@ -1,7 +1,7 @@
-const template = require('./about.marko');
+const template = require('./index.marko');
 
 const renderModel = {
-    title: 'about us',
+    title: 'contact us',
     description: 'this is is all about us',
     css: ['main.css'],
     js: ['main.js'],
