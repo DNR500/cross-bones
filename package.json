@@ -34,8 +34,7 @@
     "watch:assets": "watch -c 'npm run compile:assets' -p './src/public/assets/**/*'",
     "watch:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/bundles/**/*.*'",
     "watch:node": "watch -c 'npm run compile:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
-    "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets",
-    "tt": "node scripts/generate-static-html.js "
+    "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets"
   },
   "repository": {
     "type": "git",
@@ -101,6 +100,7 @@
     "plato": "^1.7.0",
     "postcss-cli": "^2.5.1",
     "postcss-loader": "^1.1.1",
+    "pre-push": "^0.1.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "sass-loader": "^4.0.2",
@@ -111,5 +111,10 @@
     "webpack-cleanup-plugin": "^0.4.1",
     "webpack-manifest-plugin": "^1.0.1",
     "webpack-visualizer-plugin": "^0.1.5"
-  }
+  },
+  "pre-push": [
+    "lint",
+    "test:node",
+    "test:karma"
+  ]
 }
