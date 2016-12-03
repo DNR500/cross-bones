@@ -30,11 +30,13 @@
     "compile:public": "webpack",
     "compile": "npm run compile:node && npm run compile:public && npm run compile:html && npm run compile:assets",
     "build": "npm run lint && npm run test:karma && npm run compile && npm run test:casper",
+    "prepublish": "npm run build",
     "watch:html": "watch -c 'npm run compile:html' -p './src/public/**/*.html.js' & watch -c 'npm run compile:html' -p './src/public/**/*.marko'",
     "watch:assets": "watch -c 'npm run compile:assets' -p './src/public/assets/**/*'",
     "watch:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/bundles/**/*.*'",
     "watch:node": "watch -c 'npm run compile:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
-    "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets"
+    "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets",
+    "prepush": "npm run lint && npm run test:node && npm run test:karma"
   },
   "repository": {
     "type": "git",
@@ -79,6 +81,7 @@
     "glob": "^7.1.1",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.15.0",
+    "husky": "^0.11.9",
     "jsonlint-cli": "^1.0.1",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -100,7 +103,6 @@
     "plato": "^1.7.0",
     "postcss-cli": "^2.5.1",
     "postcss-loader": "^1.1.1",
-    "prepush": "^3.1.11",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "sass-loader": "^4.0.2",
@@ -111,9 +113,5 @@
     "webpack-cleanup-plugin": "^0.4.1",
     "webpack-manifest-plugin": "^1.0.1",
     "webpack-visualizer-plugin": "^0.1.5"
-  },
-  "prepush": [
-    "lint",
-    "test:node"
-  ]
+  }
 }
