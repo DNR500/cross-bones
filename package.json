@@ -114,7 +114,6 @@
   },
   "prepush": [
     "lint",
-    "test:node",
-    "test:karma"
+    "test:node"
   ]
 }
