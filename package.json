@@ -36,7 +36,7 @@
     "watch:public": "webpack --watch & watch -c 'npm run compile:html' -p './build/public/bundles/**/*.*'",
     "watch:node": "watch -c 'npm run compile:node' -p './src/node/**/*.js' & nodemon -w ./build/node ./build/node/server.js",
     "watch": "npm run watch:public & npm run watch:html & npm run watch:node & npm run watch:assets",
-    "release": "node scripts/release.js -m 'patch'",
+    "release": "npm run build && node scripts/release.js -m 'patch'",
     "prepush": "npm run lint && npm run test:node && npm run test:karma"
   },
   "repository": {

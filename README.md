@@ -1,6 +1,6 @@
 # Cross-Bones
 
-This is a continuing work in progress and an accumulative collection of tasks and frameworks that outline the way I like to work. This was originally a project that I used to spike out new projects and get something up and running quickly. The aim now is to make if a project that will allow me to get something to production as quickly as possible.
+This is a continuing work in progress and an accumulative collection of tasks and frameworks that outline the way I like to work. This was originally a project that I used to spike out new projects and get something up and running quickly. The aim now is to make it a project that will allow me to get something to production as quickly as possible.
 
 * es6/babel/jsx/react coding practise for both front and back end 
 * minification and bundling for frontend assets (using sass, postcss, and webpack)
@@ -24,6 +24,7 @@ See the scripts section of the package.json for a fuller outline..
 * **npm run compile** - outputs static files for css, js, and other static assets
 * **npm run build** - lints, test, amd compiles the site
 * **npm run watch** - sets up watch tasks to help speed up development
+* **npm run release** - bump the version number and create a release on github
 
 ### To run project..
 
