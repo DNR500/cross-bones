@@ -1,0 +1,5 @@
+{
+    viewports:[
+        { name:'medium', width:750, height:1334 }
+    ]
+}
