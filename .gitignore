@@ -85,4 +85,7 @@ build/
 report/
 .DS_Store
 
+test/nightmare/screenshot/expected/
+# remove the following when you want to commit screebshot tests
 test/nightmare/screenshot/actual/
+
