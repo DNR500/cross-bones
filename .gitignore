@@ -84,3 +84,5 @@ jspm_packages
 build/
 report/
 .DS_Store
+
+test/nightmare/screenshot/actual/
